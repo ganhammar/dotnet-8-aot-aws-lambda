@@ -18,10 +18,10 @@ public class AppStack : Stack
       RestApiName = "dotnet-8-aot-api",
       DefaultCorsPreflightOptions = new CorsOptions
       {
-        AllowOrigins = new[]
-        {
+        AllowOrigins =
+        [
           "http://localhost:3000",
-        },
+        ],
       },
     });
 
@@ -31,7 +31,7 @@ public class AppStack : Stack
       Runtime = Runtime.DOTNET_6,
       Architecture = Architecture.ARM_64,
       Handler = "TestFunction::TestFunction.Function::FunctionHandler",
-      Code = Code.FromAsset($"./{id}.zip"),
+      Code = Code.FromAsset($"./.output/{id}.zip"),
       Timeout = Duration.Minutes(1),
       MemorySize = 256,
       LogRetention = RetentionDays.ONE_DAY,

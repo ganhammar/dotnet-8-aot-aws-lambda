@@ -35,16 +35,12 @@ jobs:
         run: dotnet restore
       - name: Build
         run: dotnet build --no-restore
-      - name: Install Lambda Tools
-        run: dotnet tool install -g Amazon.Lambda.Tools
-      - name: Package
-        run: |
-          dotnet lambda package \
-            --framework net8.0 \
-            --configuration Release \
-            --project-location ./src/TestFunction \
-            --function-architecture x86_64 \
-            --output-package ./.output/TestFunction.zip
+      - name: Publish
+        run: dotnet publish --no-build --configuration Release --output ../../.output/TestFunction
+        working-directory: ./src/TestFunction
+      - uses: montudor/action-zip@v1
+        with:
+          args: zip -qq -r ./.output/TestFunction.zip ./.output/TestFunction
 
       - name: Install node
         uses: actions/setup-node@v3
@@ -52,7 +48,7 @@ jobs:
           node-version: 18
       - name: Setup CDK
         run: npm install -g aws-cdk
-      # - name: CDK Bootstrap
-      #   run: cdk bootstrap
-      # - name: CDK Deploy
-      #   run: cdk deploy --require-approval never --all
+      - name: CDK Bootstrap
+        run: cdk bootstrap
+      - name: CDK Deploy
+        run: cdk deploy --require-approval never --all
