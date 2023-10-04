@@ -32,7 +32,7 @@ jobs:
           role-session-name: OIDCSession
 
       - name: Restore
-        run: dotnet restore
+        run: dotnet restore --use-current-runtime
       - name: Build
         run: dotnet build --no-restore
       - name: Publish
