@@ -12,7 +12,7 @@
   "region": "",
   "configuration": "Release",
   "function-runtime": "provided.al2023",
-  "function-memory-size": 256,
+  "function-memory-size": 128,
   "function-timeout": 30,
   "function-handler": "Function"
 }
