@@ -36,10 +36,10 @@ public class AppStack : Stack
       MemorySize = 256,
       LogRetention = RetentionDays.ONE_DAY,
     });
-    api.Root.AddMethod("GET", new LambdaIntegration(function));
+    api.Root.AddMethod("POST", new LambdaIntegration(function));
 
     // Output
-    new CfnOutput(this, "APIGWEndpoint", new CfnOutputProps
+    _ = new CfnOutput(this, "APIGWEndpoint", new CfnOutputProps
     {
       Value = api.Url,
     });
