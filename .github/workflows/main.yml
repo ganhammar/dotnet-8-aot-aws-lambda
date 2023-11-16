@@ -1,4 +1,4 @@
-otname: CI-CD
+name: CI-CD
 
 on:
   workflow_dispatch:
