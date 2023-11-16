@@ -33,9 +33,14 @@ public class Function
   public static APIGatewayHttpApiV2ProxyResponse FunctionHandler(
       APIGatewayHttpApiV2ProxyRequest apiGatewayHttpApiV2ProxyRequest, ILambdaContext context)
   {
-    var who = apiGatewayHttpApiV2ProxyRequest.QueryStringParameters["who"];
-
-    ArgumentNullException.ThrowIfNull(who);
+    if (!apiGatewayHttpApiV2ProxyRequest.QueryStringParameters.TryGetValue("who", out var who))
+    {
+      return new APIGatewayHttpApiV2ProxyResponse
+      {
+        Body = "Who are you? 🤔",
+        StatusCode = (int)HttpStatusCode.BadRequest,
+      };
+    }
 
     return new APIGatewayHttpApiV2ProxyResponse
     {

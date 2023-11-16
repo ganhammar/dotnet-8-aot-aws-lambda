@@ -38,7 +38,14 @@ public class Function
       apiGatewayHttpApiV2ProxyRequest.Body,
       CustomJsonSerializerContext.Default.Thing);
 
-    ArgumentNullException.ThrowIfNull(thing);
+    if (thing?.Who == default)
+    {
+      return new APIGatewayHttpApiV2ProxyResponse
+      {
+        Body = "Who are you? 🤔",
+        StatusCode = (int)HttpStatusCode.BadRequest,
+      };
+    }
 
     return new APIGatewayHttpApiV2ProxyResponse
     {
