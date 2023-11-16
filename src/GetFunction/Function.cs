@@ -35,6 +35,8 @@ public class Function
   {
     var who = apiGatewayHttpApiV2ProxyRequest.QueryStringParameters["who"];
 
+    ArgumentNullException.ThrowIfNull(who);
+
     return new APIGatewayHttpApiV2ProxyResponse
     {
       StatusCode = (int)HttpStatusCode.OK,
