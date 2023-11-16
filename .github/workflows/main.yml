@@ -41,9 +41,17 @@ jobs:
       - name: Zip PostFunction
         run: zip -q -D ../../../../../../../.output/PostFunction.zip *
         working-directory: ./src/PostFunction/bin/Release/net8.0/linux-x64/publish
-      - name: Zip GetFunction
-        run: zip -q -D ../../../../../../../.output/GetFunction.zip *
-        working-directory: ./src/GetFunction/bin/Release/net8.0/linux-x64/publish
+      - name: Zip Packages
+        run: |
+          mkdir .output
+
+          projects=(GetFunction PostFunction)
+          for project in "${projects[@]}"
+          do
+            cd src/$project/bin/Release/net8.0/linux-x64/publish
+            zip -q -D ../../../../../../../.output/$project.zip *
+            cd ../../../../../../../
+          done
 
       - name: Install node
         uses: actions/setup-node@v3

@@ -33,7 +33,7 @@ public class Function
   public static APIGatewayHttpApiV2ProxyResponse FunctionHandler(
       APIGatewayHttpApiV2ProxyRequest apiGatewayHttpApiV2ProxyRequest, ILambdaContext context)
   {
-    var who = apiGatewayHttpApiV2ProxyRequest.PathParameters["who"];
+    var who = apiGatewayHttpApiV2ProxyRequest.QueryStringParameters["who"];
 
     return new APIGatewayHttpApiV2ProxyResponse
     {
