@@ -38,9 +38,6 @@ jobs:
 
       - name: Publish PostFunction
         run: dotnet publish --no-build --configuration Release
-      - name: Zip PostFunction
-        run: zip -q -D ../../../../../../../.output/PostFunction.zip *
-        working-directory: ./src/PostFunction/bin/Release/net8.0/linux-x64/publish
       - name: Zip Packages
         run: |
           mkdir .output
