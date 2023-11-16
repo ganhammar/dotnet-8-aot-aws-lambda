@@ -36,11 +36,13 @@ jobs:
       - name: Build
         run: dotnet build --no-restore
       - name: Publish
-        run: dotnet publish --no-build --configuration Release --output ../../.output/TestFunction
-        working-directory: ./src/TestFunction
-      - name: Zip Package
-        run: zip -q -D ../TestFunction.zip *
-        working-directory: ./.output/TestFunction
+        run: dotnet publish --no-build --configuration Release
+      - name: Zip PostFunction
+        run: zip -q -D ../../../../../../.output/PostFunction.zip *
+        working-directory: ./src/PostFunction/bin/Release/net8.0/publish
+      - name: Zip GetFunction
+        run: zip -q -D ../../../../../../.output/GetFunction.zip *
+        working-directory: ./src/GetFunction/bin/Release/net8.0/publish
 
       - name: Install node
         uses: actions/setup-node@v3

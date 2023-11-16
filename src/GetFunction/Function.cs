@@ -1,13 +1,12 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Net;
-using System.Text.Json;
 using Amazon.Lambda.APIGatewayEvents;
 using Amazon.Lambda.Core;
 using Amazon.Lambda.RuntimeSupport;
 using Amazon.Lambda.Serialization.SystemTextJson;
 using Amazon.XRay.Recorder.Handlers.AwsSdk;
 
-namespace TestFunction;
+namespace GetFunction;
 
 public class Function
 {
@@ -34,16 +33,12 @@ public class Function
   public static APIGatewayHttpApiV2ProxyResponse FunctionHandler(
       APIGatewayHttpApiV2ProxyRequest apiGatewayHttpApiV2ProxyRequest, ILambdaContext context)
   {
-    var thing = JsonSerializer.Deserialize(
-      apiGatewayHttpApiV2ProxyRequest.Body,
-      CustomJsonSerializerContext.Default.Thing);
-
-    ArgumentNullException.ThrowIfNull(thing);
+    var who = apiGatewayHttpApiV2ProxyRequest.PathParameters["who"];
 
     return new APIGatewayHttpApiV2ProxyResponse
     {
       StatusCode = (int)HttpStatusCode.OK,
-      Body = $"Hello {thing.Who} 👋"
+      Body = $"Hello {who} 👋"
     };
   }
 }

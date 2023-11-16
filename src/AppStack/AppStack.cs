@@ -25,18 +25,31 @@ public class AppStack : Stack
       },
     });
 
-    // Create
-    var function = new Function(this, "TestFunction", new FunctionProps
+    // Post
+    var post = new Function(this, "PostFunction", new FunctionProps
     {
       Runtime = Runtime.PROVIDED_AL2023,
       Architecture = Architecture.X86_64,
-      Handler = "TestFunction::TestFunction.Function::FunctionHandler",
-      Code = Code.FromAsset($"./.output/TestFunction.zip"),
+      Handler = "PostFunction::PostFunction.Function::FunctionHandler",
+      Code = Code.FromAsset($"./.output/PostFunction.zip"),
       Timeout = Duration.Minutes(1),
-      MemorySize = 256,
+      MemorySize = 128,
       LogRetention = RetentionDays.ONE_DAY,
     });
-    api.Root.AddMethod("POST", new LambdaIntegration(function));
+    api.Root.AddMethod("POST", new LambdaIntegration(post));
+
+    // Get
+    var get = new Function(this, "GetFunction", new FunctionProps
+    {
+      Runtime = Runtime.PROVIDED_AL2023,
+      Architecture = Architecture.X86_64,
+      Handler = "GetFunction::GetFunction.Function::FunctionHandler",
+      Code = Code.FromAsset($"./.output/GetFunction.zip"),
+      Timeout = Duration.Minutes(1),
+      MemorySize = 128,
+      LogRetention = RetentionDays.ONE_DAY,
+    });
+    api.Root.AddMethod("POST", new LambdaIntegration(get));
 
     // Output
     _ = new CfnOutput(this, "APIGWEndpoint", new CfnOutputProps

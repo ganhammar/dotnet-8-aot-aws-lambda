@@ -5,9 +5,11 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1D4711F1-FA67-49D4-94D1-80DDC3019B5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFunction", "src\TestFunction\TestFunction.csproj", "{37C083B6-CB35-4981-A0F9-6568CD3DB3EC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostFunction", "src\PostFunction\PostFunction.csproj", "{37C083B6-CB35-4981-A0F9-6568CD3DB3EC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppStack", "src\AppStack\AppStack.csproj", "{5A2A9C19-4A28-4929-BDE0-050205366B68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetFunction", "src\GetFunction\GetFunction.csproj", "{E1D90CC6-8F5D-4BEF-B564-C23C2C3B0455}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,9 +28,14 @@ Global
 		{5A2A9C19-4A28-4929-BDE0-050205366B68}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A2A9C19-4A28-4929-BDE0-050205366B68}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A2A9C19-4A28-4929-BDE0-050205366B68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1D90CC6-8F5D-4BEF-B564-C23C2C3B0455}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1D90CC6-8F5D-4BEF-B564-C23C2C3B0455}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1D90CC6-8F5D-4BEF-B564-C23C2C3B0455}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1D90CC6-8F5D-4BEF-B564-C23C2C3B0455}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{37C083B6-CB35-4981-A0F9-6568CD3DB3EC} = {1D4711F1-FA67-49D4-94D1-80DDC3019B5D}
 		{5A2A9C19-4A28-4929-BDE0-050205366B68} = {1D4711F1-FA67-49D4-94D1-80DDC3019B5D}
+		{E1D90CC6-8F5D-4BEF-B564-C23C2C3B0455} = {1D4711F1-FA67-49D4-94D1-80DDC3019B5D}
 	EndGlobalSection
 EndGlobal

@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace TestFunction;
+namespace GetFunction;
 
 public class Thing
 {
