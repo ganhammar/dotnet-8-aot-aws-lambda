@@ -28,7 +28,7 @@ public class AppStack : Stack
     // Create
     var function = new Function(this, "TestFunction", new FunctionProps
     {
-      Runtime = Runtime.PROVIDED_AL2,
+      Runtime = Runtime.PROVIDED_AL2023,
       Architecture = Architecture.X86_64,
       Handler = "TestFunction::TestFunction.Function::FunctionHandler",
       Code = Code.FromAsset($"./.output/TestFunction.zip"),
