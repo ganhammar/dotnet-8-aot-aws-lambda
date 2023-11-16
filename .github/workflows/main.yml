@@ -35,14 +35,19 @@ jobs:
         run: dotnet restore --runtime linux-x64
       - name: Build
         run: dotnet build --no-restore
-      - name: Publish
-        run: dotnet publish --no-build --configuration Release
+
+      - name: Publish PostFunction
+        run: dotnet publish --no-build --configuration Release --output ../../.output/PostFunction
+        working-directory: ./src/PostFunction
       - name: Zip PostFunction
-        run: zip -q -D ../../../../../../.output/PostFunction.zip *
-        working-directory: ./src/PostFunction/bin/Release/net8.0/publish
+        run: zip -q -D ../PostFunction.zip *
+        working-directory: ./.output/PostFunction
+      - name: Publish GetFunction
+        run: dotnet publish --no-build --configuration Release --output ../../.output/GetFunction
+        working-directory: ./src/GetFunction
       - name: Zip GetFunction
-        run: zip -q -D ../../../../../../.output/GetFunction.zip *
-        working-directory: ./src/GetFunction/bin/Release/net8.0/publish
+        run: zip -q -D ../GetFunction.zip *
+        working-directory: ./.output/GetFunction
 
       - name: Install node
         uses: actions/setup-node@v3
