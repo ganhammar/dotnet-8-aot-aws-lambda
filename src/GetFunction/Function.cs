@@ -31,7 +31,7 @@ public class Function
   }
 
   public static APIGatewayHttpApiV2ProxyResponse FunctionHandler(
-      APIGatewayHttpApiV2ProxyRequest apiGatewayHttpApiV2ProxyRequest, ILambdaContext context)
+    APIGatewayHttpApiV2ProxyRequest apiGatewayHttpApiV2ProxyRequest, ILambdaContext context)
   {
     if (apiGatewayHttpApiV2ProxyRequest?.QueryStringParameters.TryGetValue("who", out var who) != true)
     {

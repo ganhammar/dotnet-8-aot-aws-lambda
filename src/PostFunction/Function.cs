@@ -7,6 +7,8 @@ using Amazon.Lambda.RuntimeSupport;
 using Amazon.Lambda.Serialization.SystemTextJson;
 using Amazon.XRay.Recorder.Handlers.AwsSdk;
 
+[assembly: LambdaSerializer(typeof(CamelCaseLambdaJsonSerializer))]
+
 namespace PostFunction;
 
 public class Function
@@ -32,7 +34,7 @@ public class Function
   }
 
   public static APIGatewayHttpApiV2ProxyResponse FunctionHandler(
-      APIGatewayHttpApiV2ProxyRequest apiGatewayHttpApiV2ProxyRequest, ILambdaContext context)
+    APIGatewayHttpApiV2ProxyRequest apiGatewayHttpApiV2ProxyRequest, ILambdaContext context)
   {
     var thing = JsonSerializer.Deserialize(
       apiGatewayHttpApiV2ProxyRequest.Body,
