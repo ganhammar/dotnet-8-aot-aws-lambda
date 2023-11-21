@@ -7,8 +7,6 @@ using Amazon.Lambda.RuntimeSupport;
 using Amazon.Lambda.Serialization.SystemTextJson;
 using Amazon.XRay.Recorder.Handlers.AwsSdk;
 
-[assembly: LambdaSerializer(typeof(CamelCaseLambdaJsonSerializer))]
-
 namespace PostFunction;
 
 public class Function
